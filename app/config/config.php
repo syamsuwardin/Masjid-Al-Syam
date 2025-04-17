@@ -1,5 +1,5 @@
 <?php
-define('BASEURL', 'http://al-syam-mosque.test');
+define('BASEURL', 'https://masjid-al-syam.vercel.app');
 define('APP_NAME', 'Masjid Al-Syam');
 
 // Directory paths
