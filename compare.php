@@ -1,0 +1,1 @@
+<a href="/kegiatan/detail/<?= $event['id'] ?>" class="btn">Selengkapnya</a>

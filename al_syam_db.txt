@@ -1,0 +1,139 @@
+===Database al_syam_db
+
+== Table structure for table articles
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|title|varchar(255)|No|
+|**slug**|varchar(255)|No|
+|content|text|No|
+|image|varchar(255)|Yes|NULL
+|category|enum(&#039;berita&#039;, &#039;pengumuman&#039;, &#039;artikel&#039;)|No|
+|status|enum(&#039;draft&#039;, &#039;published&#039;)|Yes|draft
+|featured|tinyint(1)|Yes|0
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+|updated_at|timestamp|Yes|CURRENT_TIMESTAMP
+|author_id|int|Yes|NULL
+|views|int|Yes|0
+== Dumping data for table articles
+
+|1|Pembangunan Menara Masjid|pembangunan-menara-masjid|Konten artikel...|NULL|berita|published|1|2025-04-11 14:42:42|2025-04-11 14:42:42|NULL|0
+|2|Jadwal Kajian Ramadhan|jadwal-kajian-ramadhan|Konten artikel...|NULL|pengumuman|published|1|2025-04-11 14:42:42|2025-04-11 14:42:42|NULL|0
+|3|Pembangunan Menara Masjid Tahap 1|pembangunan-menara-masjid-tahap-1|Alhamdulillah, pembangunan menara masjid tahap pertama telah dimulai. Pembangunan ini direncanakan akan selesai dalam waktu 6 bulan ke depan...|menara-1.jpg|berita|published|0|2025-04-11 15:51:37|2025-04-11 18:56:10|NULL|0
+|4|Jadwal Kajian Ramadhan 1445 H|jadwal-kajian-ramadhan-1445-h|Berikut adalah jadwal kajian selama bulan Ramadhan 1445 H di Masjid Al-Syam...|kajian-1.jpg|pengumuman|published|0|2025-04-11 15:51:37|2025-04-11 18:56:24|NULL|0
+|5|Keutamaan Sholat Berjamaah|keutamaan-sholat-berjamaah|Sholat berjamaah memiliki keutamaan yang sangat besar dalam Islam. Rasulullah SAW bersabda...|sholat-1.jpg|artikel|published|0|2025-04-11 15:51:37|2025-04-11 18:56:32|NULL|0
+|6|Renovasi Tempat Wudhu|renovasi-tempat-wudhu|Dalam rangka meningkatkan kenyamanan jamaah, Masjid Al-Syam melakukan renovasi tempat wudhu...|wudhu-1.jpg|berita|published|0|2025-04-11 15:51:37|2025-04-11 18:56:41|NULL|0
+|7|Program Santunan Anak Yatim|program-santunan-anak-yatim|Masjid Al-Syam mengadakan program santunan rutin untuk anak yatim setiap bulan...|santunan-1.jpg|pengumuman|published|0|2025-04-11 15:51:37|2025-04-11 18:56:49|NULL|0
+|8|Adab Memasuki Masjid|adab-memasuki-masjid|Sebagai muslim, penting bagi kita untuk mengetahui adab-adab ketika memasuki masjid...|adab-1.jpg|artikel|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+|9|Pemasangan Panel Surya|pemasangan-panel-surya|Masjid Al-Syam mulai menggunakan energi ramah lingkungan dengan memasang panel surya...|panel-1.jpg|berita|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+|10|Pembukaan Pendaftaran TPA|pembukaan-pendaftaran-tpa|Telah dibuka pendaftaran Taman Pendidikan Al-Quran (TPA) untuk semester baru...|tpa-1.jpg|pengumuman|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+|11|Panduan Sholat Tahajjud|panduan-sholat-tahajjud|Sholat tahajjud merupakan salah satu ibadah sunnah yang memiliki keutamaan besar...|tahajjud-1.jpg|artikel|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+|12|Perbaikan Sistem Audio|perbaikan-sistem-audio|Demi meningkatkan kualitas suara adzan dan kajian, dilakukan perbaikan sistem audio masjid...|audio-1.jpg|berita|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+|13|Jadwal Khatib Jumat|jadwal-khatib-jumat|Berikut adalah jadwal khatib Jumat untuk bulan Syawal 1445 H...|khatib-1.jpg|pengumuman|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+|14|Pentingnya Memakmurkan Masjid|pentingnya-memakmurkan-masjid|Allah SWT menjanjikan pahala yang besar bagi orang-orang yang memakmurkan masjid...|makmur-1.jpg|artikel|published|0|2025-04-11 15:51:37|2025-04-11 18:59:51|NULL|0
+== Table structure for table donations
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|nama|varchar(255)|No|
+|email|varchar(255)|Yes|NULL
+|jumlah|decimal(12,2)|No|
+|metode|varchar(100)|No|
+|pesan|text|Yes|NULL
+|is_hidden|tinyint(1)|Yes|0
+|status|enum(&#039;pending&#039;, &#039;confirmed&#039;, &#039;cancelled&#039;)|Yes|pending
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+== Dumping data for table donations
+
+== Table structure for table events
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|title|varchar(255)|No|
+|description|text|Yes|NULL
+|event_date|date|No|
+|event_time|time|No|
+|location|varchar(255)|Yes|NULL
+|image|varchar(255)|Yes|NULL
+|status|enum(&#039;upcoming&#039;, &#039;ongoing&#039;, &#039;completed&#039;)|Yes|upcoming
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+== Dumping data for table events
+
+|1|Kajian Rutin|Kajian rutin mingguan|2024-04-15|19:30:00|Masjid Al-Syam|NULL|upcoming|2025-04-11 14:51:32
+|2|Buka Puasa Bersama|Kegiatan buka puasa bersama|2024-04-20|17:30:00|Halaman Masjid|NULL|upcoming|2025-04-11 14:51:32
+|3|Sholat Idul Fitri|Sholat Idul Fitri 1445 H|2024-04-10|06:30:00|Masjid Al-Syam|NULL|upcoming|2025-04-11 14:51:32
+== Table structure for table gallery
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|title|varchar(255)|No|
+|description|text|Yes|NULL
+|image|varchar(255)|No|
+|category|varchar(100)|Yes|NULL
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+== Dumping data for table gallery
+
+== Table structure for table prayer_times
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|**date**|date|No|
+|imsyak|time|No|
+|fajr|time|No|
+|sunrise|time|No|
+|dhuhr|time|No|
+|asr|time|No|
+|maghrib|time|No|
+|isha|time|No|
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+== Dumping data for table prayer_times
+
+|1|2025-04-11|04:20:00|04:30:00|05:45:00|12:00:00|15:15:00|18:00:00|19:15:00|2025-04-11 15:10:28
+== Table structure for table settings
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|**setting_key**|varchar(100)|No|
+|setting_value|text|Yes|NULL
+|setting_group|varchar(100)|Yes|general
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+|updated_at|timestamp|Yes|CURRENT_TIMESTAMP
+== Dumping data for table settings
+
+|1|site_name|Masjid Al-Syam|general|2025-04-11 14:07:59|2025-04-11 14:07:59
+|2|site_description|Website Resmi Masjid Al-Syam|general|2025-04-11 14:07:59|2025-04-11 14:07:59
+|3|address|Jalan Masjid No. 123|contact|2025-04-11 14:07:59|2025-04-11 14:07:59
+|4|phone|(021) 1234-5678|contact|2025-04-11 14:07:59|2025-04-11 14:07:59
+|5|email|info@masjidalsyam.com|contact|2025-04-11 14:07:59|2025-04-11 14:07:59
+|6|facebook|https://facebook.com/masjidalsyam|social|2025-04-11 14:07:59|2025-04-11 14:07:59
+|7|instagram|https://instagram.com/masjidalsyam|social|2025-04-11 14:07:59|2025-04-11 14:07:59
+|8|youtube|https://youtube.com/masjidalsyam|social|2025-04-11 14:07:59|2025-04-11 14:07:59
+== Table structure for table users
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int|No|
+|**username**|varchar(50)|No|
+|password|varchar(255)|No|
+|name|varchar(100)|No|
+|**email**|varchar(255)|No|
+|role|enum(&#039;admin&#039;, &#039;editor&#039;)|Yes|editor
+|status|tinyint(1)|Yes|1
+|last_login|timestamp|Yes|NULL
+|created_at|timestamp|Yes|CURRENT_TIMESTAMP
+== Dumping data for table users
+
+|1|admin|$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi|Administrator|admin@masjidalsyam.com|admin|1|NULL|2025-04-11 14:07:59

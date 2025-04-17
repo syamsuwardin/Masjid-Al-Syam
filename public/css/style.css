@@ -1,0 +1,1379 @@
+:root {
+  --primary-color: #20B2AA;
+  --secondary-color: #48D1CC;
+  --dark-color: #008B8B;
+  --light-color: #E0FFFF;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f5;
+}
+
+/* Header & Navigation */
+.header {
+  background-color: var(--white);
+  padding: 0.5rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: 70px;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-image {
+  width: 50px;
+  height: auto;
+}
+
+.logo-text {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.menu-toggle {
+  display: none; /* Hide burger menu on desktop */
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.nav-menu a {
+  color: var(--dark-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Main Content Area */
+main {
+  margin-top: 70px; /* Sesuaikan dengan tinggi header saja */
+  padding-top: 0; /* Hapus padding-top */
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--light-color);
+  padding: 3rem 0; /* Kurangi padding top dan bottom */
+  text-align: center;
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/img/mosque-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  min-height: 450px; /* Kurangi sedikit tinggi minimum */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: var(--dark-color);
+  transform: translateY(-2px);
+}
+
+/* Content Sections */
+.section {
+  padding: 1.5rem 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Card Styles & Animations */
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card h3 {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+  color: var(--primary-color);
+}
+
+.card p {
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.card:hover p {
+  color: #333;
+}
+
+/* Optional: Add animation for card images if you have them */
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+/* Add reveal animation for cards when they load */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid .card {
+  animation: cardReveal 0.5s ease forwards;
+  opacity: 0;
+}
+
+.grid .card:nth-child(1) { animation-delay: 0.1s; }
+.grid .card:nth-child(2) { animation-delay: 0.2s; }
+.grid .card:nth-child(3) { animation-delay: 0.3s; }
+.grid .card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Prayer Times Section */
+.prayer-times {
+    padding: 1rem 0;
+    background: var(--light-color);
+}
+
+.prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 1rem auto;
+    max-width: 1200px;
+}
+
+.prayer-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.prayer-card:hover {
+    transform: translateY(-5px);
+}
+
+.prayer-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.prayer-icon i {
+    color: var(--white);
+    font-size: 1.5rem;
+}
+
+.prayer-info {
+    flex: 1;
+}
+
+.prayer-info h3 {
+    margin: 0;
+    color: var(--dark-color);
+    font-size: 1.25rem;
+}
+
+.prayer-time {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .prayer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .prayer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Special style for Imsyak */
+.prayer-card[data-prayer="Imsyak"] {
+  background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+}
+
+.prayer-card[data-prayer="Imsyak"] .prayer-name,
+.prayer-card[data-prayer="Imsyak"] .prayer-time {
+  color: var(--white);
+}
+
+.prayer-card[data-prayer="Imsyak"]:hover {
+  background: linear-gradient(135deg, var (--dark-color), var(--primary-color));
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .prayer-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom di tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .prayer-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile besar */
+    }
+}
+
+@media (max-width: 480px) {
+    .prayer-grid {
+        grid-template-columns: 1fr; /* 1 kolom di mobile kecil */
+    }
+}
+
+/* Event Cards */
+.event-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.event-card .card-body {
+    padding: 1.5rem;
+}
+
+.event-date {
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.event-date i {
+    margin-right: 0.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 0rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+/* Page Header */
+.page-header {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Schedule Table */
+.schedule-table {
+    overflow-x: auto;
+    margin: 1rem 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-table th {
+    background: var(--light-color);
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.schedule-table tr:hover {
+    background: rgba(32, 178, 170, 0.05);
+}
+
+.schedule-table .day-name {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Section Spacing */
+.weekly-schedule,
+.monthly-schedule {
+    padding: 1rem 0;
+}
+
+.weekly-schedule {
+    background: var(--white);
+}
+
+.schedule-table {
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.schedule-table th {
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.schedule-table tr:nth-child(even) {
+    background: var(--light-color);
+}
+
+.schedule-table tr:hover {
+    background: #f5f5f5;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .schedule-table {
+        margin: 1rem -20px;
+        border-radius: 0;
+    }
+    
+    .schedule-table th,
+    .schedule-table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--dark-color);
+  color: var(--white);
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-section h3 {
+  color: var(--light-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.footer-section:hover h3::after {
+  width: 75px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+  color: var(--white);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+}
+
+.footer-section ul li a::before {
+  content: '\f054';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: var(--primary-color);
+  padding-left: 10px;
+}
+
+.footer-section ul li a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Social Media Links in Footer */
+.footer-section.social-links ul li a {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.footer-section.social-links ul li a i {
+  margin-right: 12px;
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-section.social-links ul li a span {
+  color: var(--white);
+  transition: color 0.3s ease;
+}
+
+/* Hover effects for each social media */
+.footer-section.social-links ul li a.facebook:hover {
+  background: #3b5998;
+}
+
+.footer-section.social-links ul li a.instagram:hover {
+  background: #e4405f;
+}
+
+.footer-section.social-links ul li a.youtube:hover {
+  background: #ff0000;
+}
+
+.footer-section.social-links ul li a:hover {
+  transform: translateX(5px);
+}
+
+.footer-section.social-links ul li a:hover span {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.footer-section.social-links ul li a:hover i {
+  color: var(--white);
+}
+
+.footer-section.social-links ul li a i {
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+
+.footer-section.social-links ul li a:hover {
+  background: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.copyright {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show burger menu on mobile */
+  }
+
+  .header-container {
+    padding: 0 15px;
+  }
+
+  .header {
+    padding: 1rem 0;
+    height: 60px;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-menu li a {
+    display: block;
+    padding: 0.5rem 1;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 2rem 0;
+    min-height: 350px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  main {
+    margin-top: 60px;
+  }
+
+  .prayer-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile besar */
+  }
+}
+
+@media (max-width: 480px) {
+  .prayer-grid {
+    grid-template-columns: 1fr; /* 1 kolom di mobile kecil */
+  }
+}
+
+/* Donation Page Styles */
+.donation-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+    align-items: start;
+    margin: 2rem auto;
+}
+
+.donation-form,
+.donation-info {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: 100%; /* Make both elements same height */
+    display: flex;
+    flex-direction: column;
+}
+
+.donation-info {
+    position: sticky;
+    top: 90px; /* Adjust based on your header height + some padding */
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .donation-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .donation-info {
+        position: relative;
+        top: 0;
+    }
+}
+
+.donation-form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.donation-form h2 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    
+}
+
+/* Form Styles Update */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem; /* Kurangi dari 0.5rem */
+    color: var (--dark-color);
+    font-weight: 500;
+    font-size: 0.9rem; /* Tambahkan ukuran font yang lebih kecil */
+  }
+
+  .form-group .required {
+      color: #e74c3c;
+  }
+
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem; /* Kurangi dari 0.8rem */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem; /* Tambahkan ukuran font yang proporsional */
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(32, 178, 170, 0.1);
+    outline: none;
+}
+.form-group small {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.form-group .required {
+    color: #e74c3c;
+    margin-left: 2px;
+    font-size: 0.8rem; /* Ukuran tanda bintang */
+}
+
+/* Input group untuk jumlah donasi */
+.input-group {
+    margin-top: 0.25rem; /* Tambahkan sedikit space dari label */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-group .prefix {
+    position: absolute;
+    left: 1rem; 
+    
+    color: #666;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+.input-group input{
+  padding-left: 3rem !important;
+}
+
+/* Checkbox styling */
+.checkbox {
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+}
+
+.checkbox label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.payment-method {
+    position: relative;
+}
+
+.payment-method input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.payment-method label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.payment-method label img {
+    height: 30px;
+    width: auto;
+}
+
+.payment-method input[type="radio"]:checked + label {
+    border-color: var(--primary-color);
+    background: rgba(32, 178, 170, 0.05);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 1rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: larger;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+/* Donation Info Styles */
+.donation-info {
+    background: var(--white);
+    padding: 1.5rem;
+    height: fit-content;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.total-donations {
+    text-align: center;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid #eee;
+}
+
+.total-donations .amount {
+    min-height: 7rem; /* <<< Tambahkan ini */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-color);
+    border-radius: 4px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.total-donations h2 {
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.bank-accounts {
+    margin-bottom: 2rem;
+}
+
+.bank-account {
+    padding: 1rem;
+    background: var(--light-color);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.bank-account h4 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.account-number {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.latest-donations {
+    margin-top: 2rem;
+}
+
+.donation-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.donation-item:last-child {
+    border-bottom: none;
+}
+
+.donation-amount {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.donation-name {
+    color: var(--dark-color);
+    margin: 0.25rem 0;
+}
+
+.donation-message {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .donation-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-methods {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Success Page Styles */
+.success-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.icon-success {
+    font-size: 4rem;
+    color: #2ecc71;
+    margin-bottom: 1.5rem;
+}
+
+.success-message h2 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Error Message Styles */
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-error {
+    background: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #991b1b;
+}
+
+.alert-success {
+    background: #dcfce7;
+    border: 1px solid #22c55e;
+    color: #166534;
+}
+
+.alert i {
+    font-size: 1.2rem;
+}
+
+/* Contact Page Styles */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch; /* Change from start to stretch */
+    margin: 2rem auto;
+}
+
+.contact-form,
+.info-contact {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 100%; /* Make both elements same height */
+    display: flex;
+    flex-direction: column;
+}
+
+.info-contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    align-content: start; /* Align content to top */
+}
+
+.info-card {
+    background: var(--light-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form,
+    .info-contact {
+        height: auto;
+    }
+    
+    .info-contact {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-form {
+    background: var(--white);
+    padding: 1.5rem; /* Kurangi padding */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact-form h2 {
+    font-size: 1.5rem; /* Kurangi ukuran heading */
+    margin-bottom: 0.5rem; /* Kurangi margin bottom */
+    color: var(--dark-color);
+}
+
+.contact-form .form-group {
+    margin-bottom: 0.75rem; /* Kurangi jarak antar form group */
+}
+
+/* Info Kontak */
+.info-contact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk info cards */
+  gap: 1rem;
+}
+
+.info-card {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.info-card h3 {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.info-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Map Container */
+.map-container {
+    grid-column: 1 / -1; /* Span full width */
+    margin-top: 0rem;
+    height: 349px; /* Set fixed height */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr; /* Stack info cards on mobile */
+    }
+}
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form {
+        margin-bottom: 1rem; /* Tambah space antara form dan info di mobile */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.page-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    background: var(--light-color);
+}
+
+.page-link.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.page-link i {
+    font-size: 0.875rem;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .pagination {
+        flex-wrap: wrap;
+    }
+    
+    .page-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Articles Section Styles */
+.articles-section {
+    padding: 1rem 0;
+    background: var(--light-color);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    grid-template-rows: auto;/* 2 baris */
+    gap: 1.5rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.article-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.article-card .card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card h3 {
+    margin: 0.75rem 0;
+    font-size: 1.25rem;
+    color: var(--dark-color);
+    /* Tambahkan properti ini */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box; 
+    -webkit-line-clamp: 2; /* Batasi ke 2 baris */
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+    max-height: 2.6em; /* 2 x line-height */
+}
+
+.article-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.article-card .card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+}
+
+.date {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.date i {
+    margin-right: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+h2 {
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h2::after {
+        width: 60px;
+    }
+}
